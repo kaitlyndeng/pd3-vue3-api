@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div class="pie">
+    <h1>Data in Pie.</h1>
+  </div>
 </template>
 
 <script>
