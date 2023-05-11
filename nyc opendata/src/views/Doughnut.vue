@@ -1,12 +1,21 @@
 <template>
   <div class="container">
-    <Bar v-if="loaded" :data="chartData" />
+    <Doughnut v-if="loaded" :data="chartData" />
   </div>
 </template>
 
 <script>
+import { ref, onMounted } from 'vue'
 import { Doughnut } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, DoughnutElement, CategoryScale, LinearScale } from 'chart.js'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale
+} from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
@@ -17,7 +26,7 @@ export default {
     loaded: false,
     chartData: null
   }),
-  async mounted () {
+  async mounted() {
     this.loaded = false
 
     try {
