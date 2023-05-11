@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <h1>2013-2018 School Math Results</h1>
     <Doughnut v-if="loaded" :data="chartData" />
   </div>
 </template>
@@ -35,7 +34,7 @@ export default {
 }
 const math = ref('')
 async function getData() {
-  let res = await fetch('https://data.cityofnewyork.us/resource/m27t-ht3h.json')
+  let res = await fetch('https://data.cityofnewyork.us/resource/m27t-ht3h.json?grade=3')
   let data = await res.json()
   math.value = data.results
 }

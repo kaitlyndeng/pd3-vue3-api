@@ -1,12 +1,12 @@
 <template>
   <div class="about">
     <h1></h1>
-    <Pie v-if="loaded" :data="chartData" />
+    <Line v-if="loaded" :data="chartData" />
   </div>
 </template>
 <script>
 import { ref, onMounted } from 'vue'
-import { Pie } from 'vue-chartjs'
+import { Line } from 'vue-chartjs'
 import {
   Chart as ChartJS,
   Title,

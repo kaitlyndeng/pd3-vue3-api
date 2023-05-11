@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <h1>2013-2018 School Math Results</h1>
+  </div>
 </template>
 
 <script>
