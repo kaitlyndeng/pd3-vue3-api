@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1>2013-2018 School Math Results</h1>
     <Doughnut v-if="loaded" :data="chartData" />
   </div>
 </template>
@@ -18,25 +19,27 @@ import {
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
-
 export default {
   name: 'DoughnutChart',
   components: { Doughnut },
-  data: () => ({
-    loaded: false,
-    chartData: null
-  }),
-  async mounted() {
-    this.loaded = false
-
-    try {
-      const { userlist } = await fetch('/api/userlist')
-      this.chartdata = userlist
-
-      this.loaded = true
-    } catch (e) {
-      console.error(e)
+  props: {
+    chartData: {
+      type: Object,
+      required: true
+    },
+    chartOptions: {
+      type: Object,
+      default: () => {}
     }
   }
 }
+const math = ref('')
+async function getData() {
+  let res = await fetch('https://data.cityofnewyork.us/resource/m27t-ht3h.json')
+  let data = await res.json()
+  math.value = data.results
+}
+onMounted(() => {
+  getData()
+})
 </script>
