@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
 import { Doughnut } from 'vue-chartjs'
 import {
   Chart as ChartJS,
@@ -22,24 +21,26 @@ export default {
   name: 'DoughnutChart',
   components: { Doughnut },
   props: {},
-  data(){
-    return{
-    load: false,
-    chartData: null,
-    chartOptions: {
-    responsive: true
+  data() {
+    return {
+      load: false,
+      chartData: null,
+      chartOptions: {
+        responsive: true
+      }
+    }
+  },
+  async mounted() {
+    this.loaded = false
+
+    try {
+      const { data } = await fetch('https://data.cityofnewyork.us/resource/m27t-ht3h.json')
+      this.chartdata = data
+
+      this.loaded = true
+    } catch (e) {
+      console.error(e)
     }
   }
-  }
- 
 }
-const math = ref('')
-async function getData() {
-  let res = await fetch('https://data.cityofnewyork.us/resource/m27t-ht3h.json')
-  let data = await res.json()
-  math.value = data.results
-}
-onMounted(() => {
-  getData()
-})
 </script>
