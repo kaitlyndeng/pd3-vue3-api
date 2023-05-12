@@ -21,20 +21,21 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 export default {
   name: 'DoughnutChart',
   components: { Doughnut },
-  props: {
-    chartData: {
-      type: Object,
-      required: true
-    },
+  props: {},
+  data(){
+    return{
+    load: false,
+    chartData: null,
     chartOptions: {
-      type: Object,
-      default: () => {}
+    responsive: true
     }
   }
+  }
+ 
 }
 const math = ref('')
 async function getData() {
-  let res = await fetch('https://data.cityofnewyork.us/resource/m27t-ht3h.json?grade=3')
+  let res = await fetch('https://data.cityofnewyork.us/resource/m27t-ht3h.json')
   let data = await res.json()
   math.value = data.results
 }
