@@ -19,7 +19,6 @@ ChartJS.register(Tooltip, Legend, ArcElement)
 export default {
   name: "DoughnutChart",
   components: { Doughnut },
-  props: {},
   data() {
     return {
       loaded: false,
@@ -35,7 +34,8 @@ export default {
           ],
         datasets: [{ data: [] }]} ,
       chartOptions: {
-        responsive: true
+        responsive: true,
+        backgroundColor: ['#cad2c5', '#84a98c', '#52796f', '#354f52', '#2f3e46','#425057','#536066']
       }
     }
   },
@@ -60,7 +60,7 @@ export default {
           grade8.length,
           allGrades.length
         ]
-        this.chartOptions.backgroundColor = ['#cad2c5', '#84a98c', '#52796f', '#354f52', '#2f3e46','#425057','#536066']
+        // this.chartOptions.backgroundColor = ['#cad2c5', '#84a98c', '#52796f', '#354f52', '#2f3e46','#425057','#536066']
       this.loaded=true
     } catch(e){
       console.log(e)
