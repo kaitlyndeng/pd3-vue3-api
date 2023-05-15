@@ -1,4 +1,4 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from 'vue-router'
 </script>
 
@@ -7,7 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <nav>
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/doughnut">Doughnut</RouterLink>
-      <RouterLink to="/Pie">Pie</RouterLink>
+      <RouterLink to="/pie">Pie</RouterLink>
     </nav>
     <RouterView />
   </div>
