@@ -49,7 +49,7 @@ export default {
       const grade5 = data.filter((scores)=> scores.grade === '5')
       const grade6 = data.filter((scores)=> scores.grade === '6')
       const grade7 = data.filter((scores)=> scores.grade === '7')
-      const grade8 = data.filter((scores)=> scores.grade === '7')
+      const grade8 = data.filter((scores)=> scores.grade === '8')
       const allGrades = data.filter((scores)=> scores.grade === 'All Grades')
       this.chartData.datasets[0].data = [
           grade3.length,
@@ -60,7 +60,6 @@ export default {
           grade8.length,
           allGrades.length
         ]
-        // this.chartOptions.backgroundColor = ['#cad2c5', '#84a98c', '#52796f', '#354f52', '#2f3e46','#425057','#536066']
       this.loaded=true
     } catch(e){
       console.log(e)
