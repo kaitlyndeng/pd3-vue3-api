@@ -18,7 +18,7 @@ const router = createRouter({
       component: () => import('../views/Doughnut.vue')
     },
     {
-      path: '/Bar',
+      path: '/bar',
       name: 'Bar',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route

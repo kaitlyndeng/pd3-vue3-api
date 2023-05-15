@@ -1,7 +1,6 @@
 <template>
   <h1>2013-2018 School Math Results</h1>
   <div class="container">
-    
     <Card v-for= "scores in scores" 
     :key="scores.school_name"
     :name="scores.school_name"
@@ -29,4 +28,5 @@ onMounted(() => {
 .h1{
   text-align: center;
 }
+
 </style>

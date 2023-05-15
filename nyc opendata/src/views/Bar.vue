@@ -1,7 +1,7 @@
 <template>
   <div class="bar">
     <h1>Students Tested Per Year</h1>
-    <Pie v-if="loaded" :data="chartData" :options="chartOptions" />
+    <Bar v-if="loaded" :data="chartData" :options="chartOptions" />
   </div>
 </template>
 <script>
@@ -33,8 +33,10 @@ export default{
           '2017',
           '2018',
           ],
-        datasets: [{ data: [] }]} ,
+        datasets: [{
+          data: [] }]} ,
       chartOptions: {
+        indexAxis: 'y',
       default: () => ({
         scales: {
           y: {
@@ -54,20 +56,19 @@ async mounted() {
     try {
       const res = await fetch('https://data.cityofnewyork.us/resource/m27t-ht3h.json');
       let data = await res.json()
-      const year2013 = data.filter((scores)=> scores.grade === '2013')
-      const year2014 = data.filter((scores)=> scores.grade === '2014')
-      const year2015 = data.filter((scores)=> scores.grade === '2015')
-      const year2016 = data.filter((scores)=> scores.grade === '2016')
-      const year2017 = data.filter((scores)=> scores.grade === '2017')
-      const year2018 = data.filter((scores)=> scores.grade === '2018')
+      const year2013 = data.filter((scores)=> scores.year === '2013')
+      const year2014 = data.filter((scores)=> scores.year === '2014')
+      const year2015 = data.filter((scores)=> scores.year === '2015')
+      const year2016 = data.filter((scores)=> scores.year === '2016')
+      const year2017 = data.filter((scores)=> scores.year === '2017')
+      const year2018 = data.filter((scores)=> scores.year === '2018')
       this.chartData.datasets[0].data = [
       year2013.length,
       year2014.length,
       year2015.length,
       year2016.length,
       year2017.length,
-      year2018.length,
-        ]
+      year2018.length, ]
       this.loaded=true
     }catch(e){
       console.log(e)
@@ -75,12 +76,6 @@ async mounted() {
   }}
 
 </script>
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
+<style scoped>
+
 </style>
